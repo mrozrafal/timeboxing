@@ -101,13 +101,8 @@
 
         }
     </style>
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js" integrity="sha256-h7PiJxtxsf7+VkAGN6N+8/0qZrhK7oYJc/pguDnYJi4=" crossorigin="anonymous"></script>
-</head>
+    
+    </head>
 
 <body>
 
@@ -264,6 +259,7 @@
 
 
      class EditableTimebox extends React.Component {
+         console.log(this.state);
          state = {
              title: "Uczę się wyciągać stan w górę",
              totalTimeInMinutes: 60,
@@ -380,6 +376,7 @@
              return (
                  <>
                     <TimeboxCreator onCreate={this.handleCreate}/>
+                    
                     {this.state.timeboxes.map((timebox, index) => (
                        
                         <Timebox 
