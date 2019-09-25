@@ -2,7 +2,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import uuid from 'uuid';
-import Clock from "./components/Clock"
+import Clock from "./components/Clock";
+import App from './components/App'
+import "./styles/main.scss"
 
     function ProgressBar ({className = "" , percent=this.progressInPercent}) {
     let nameOfClass="ProgressBar";
@@ -286,19 +288,12 @@ import Clock from "./components/Clock"
         )
      }
      
-        function App () {
-        return (
-                        
-            <div className="App">
-                <TimeboxList />
-                <TimeboxCreator />
-                <EditableTimebox />
-                <CurrentTimebox />
-            </div>
-
-            )
-        }
+   
 
     ReactDOM.render(<div><App /></div>, document.getElementById("root"));
 
 
+export {TimeboxList,
+    TimeboxCreator,
+     EditableTimebox,
+     CurrentTimebox} 
