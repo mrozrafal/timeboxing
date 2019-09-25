@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import uuid from 'uuid';
-
+import Clock from "./components/Clock"
 
     function ProgressBar ({className = "" , percent=this.progressInPercent}) {
     let nameOfClass="ProgressBar";
@@ -18,21 +18,9 @@ import uuid from 'uuid';
             );
             
     }
-    function Clock ({className = "" ,  minutes=3, seconds=4, }) {      
-      return  <h2 className={"Clock " + className }>Pozostało {formater(minutes)}:{formater(seconds)}</h2>;
-    }
+   
 
-    function formater (props){
-    let formater;
-      if (props < 0){
-      formater = `00`;
-      }else if(props < 10){
-        formater = `0${props.toString()}`;
-      }else{
-         formater = props;
-      }            
-     return `${formater}`;
-    }
+    
 
     
         function TimeboxEditor (props){         
