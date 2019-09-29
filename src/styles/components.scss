@@ -17,6 +17,7 @@
     margin: 8px;
     border-radius: 4px;
     border: 2px solid white;
+    background:#333;
     
     
 }
@@ -41,10 +42,25 @@ button {
     border-radius: 4px;
     padding: 20px;
     text-align: center;
+    background:yellowgreen;
 }
 
-.Clock {
+.clock {
     color: tomato;
+    
+    position:relative;
+    &__minutes{
+        color:green;
+        display:inline-flex;
+    }
+    &__separator{
+        color:darkblue;
+        display:inline-flex;
+    }
+    &__seconds{
+        color:red;
+        display:inline-flex;
+    }
 }
 
 .ProgressBar {
@@ -66,7 +82,8 @@ button {
 
 
 
-.ProgressBar__default {
+.ProgressBar{
+    &__default {
     border: 2px solid tomato;
     border-radius: 4px;
     height: 24px;
@@ -74,7 +91,7 @@ button {
     padding: 4px;
     position: relative;
 }
-
+}
 .ProgressBar__default>div {
     height: 100%;
     background: tomato;

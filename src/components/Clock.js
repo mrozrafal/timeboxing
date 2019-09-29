@@ -1,7 +1,18 @@
 import React from "react";
 
-function Clock ({className = "" ,  minutes=3, seconds=4, }) {      
-    return  <h2 className={"Clock " + className }>Pozostało {formater(minutes)}:{formater(seconds)}</h2>;
+function Clock ({className,  minutes, seconds }) {      
+    return  (
+<h2 className={"clock " + className }>
+      Pozostało
+      <div>
+      <div className="clock__minutes">{formater(minutes)}</div>
+      <div className="clock__separator">:</div>
+      <div className="clock__seconds">{formater(seconds)}</div>
+      </div>
+      
+    </h2>
+    )
+    
   }
   function formater (props){
     let formater;
