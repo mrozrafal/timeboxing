@@ -15,7 +15,19 @@ class CurrentTimebox extends React.Component {
          this.handleStart = this.handleStart.bind(this)
          this.handleStop =  this.handleStop.bind(this)
          this.togglePause = this.togglePause.bind(this)
+         this.intervalId = null;
     }
+    componentWillMount(){
+        console.count("montujemy")
+    }
+    componentDidUpdate(){
+        console.count("update komponentu")
+    }
+    componentWillUnmount(){
+        console.count("componentWillUnmount");
+        this.stopTimer();
+    }
+
     handleStart(event){            
      this.setState({
          isRunning: true
@@ -25,7 +37,7 @@ class CurrentTimebox extends React.Component {
      this.startTimer()
     }
    handleStop(event){
-       this.setState({
+              this.setState({
            isRunning: false,
            isPaused: false,
            pausesCount: 0,
@@ -35,18 +47,23 @@ class CurrentTimebox extends React.Component {
        this.stopTimer();
    }
       
-       startTimer() {   
-           this.intervalId = window.setInterval(
-            () => {
-            this.setState(
-                (prevState) => ({ elapsedTimeInSeconds: prevState.elapsedTimeInSeconds + 0.1})
-                   )
-               }, 100
-            )
-         }
+       startTimer() { 
+           if (this.intervalId == null) {
+            this.intervalId = window.setInterval(
+                () => {
+                this.setState(
+                    (prevState) => ({ elapsedTimeInSeconds: prevState.elapsedTimeInSeconds + 0.1})
+                       )
+                   }, 100
+                )
+             }
+
+           }  
+          
 
       stopTimer(){
            window.clearInterval(this.intervalId);
+           this.intervalId = null;
            }
    
 
