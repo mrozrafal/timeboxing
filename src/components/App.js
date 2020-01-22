@@ -2,19 +2,20 @@ import React from 'react';
 
 
 import EditableTimebox from './EditableTimebox';
-
+import Error from "./Error";
 import TimeboxList from './TimeboxList';
 
-function App () {
+function App() {
     return (
-                    
+
         <div className="App">
-            <TimeboxList />       
-            <EditableTimebox />
-           
+            <Error message="Coś nie działa w całej aplikacji">
+                <TimeboxList />
+                <EditableTimebox />
+            </Error>
         </div>
 
-        )
-    }
+    )
+}
 
 export default App;
