@@ -38,14 +38,13 @@ class TimeboxList extends React.Component {
         })
     }
     handleCreate = (createdTimebox) => {
-        try{
+        try {
             this.addTimebox(createdTimebox);
         }
-        catch(error)
-        {
-console.log("Wystąpił błąd podczas tworzenia timeboxa")
+        catch (error) {
+            console.log("Wystąpił błąd podczas tworzenia timeboxa")
         }
-        
+
     }
     render() {
         return (
