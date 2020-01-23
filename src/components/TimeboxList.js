@@ -1,7 +1,7 @@
 import React from 'react';
 import TimeboxCreator from './TimeboxCreator';
 import Timebox from './Timebox';
-import Error from './Error';
+import ErrorBoundary from './ErrorBoundary';
 
 
 
@@ -50,12 +50,12 @@ class TimeboxList extends React.Component {
         return (
             <>
                 <TimeboxCreator onCreate={this.handleCreate} />
-                <Error message="Coś poszło nie tak w liście :(">
+                <ErrorBoundary message="Coś poszło nie tak w liście :(">
 
                     {
 
                         this.state.timeboxes.map((timebox, index) => (
-                            <Error message="Coś poszło nie tak w timeboxie :(">
+                            <ErrorBoundary message="Coś poszło nie tak w timeboxie :(">
                                 <Timebox
                                     key={timebox.id}
                                     title={timebox.title}
@@ -63,11 +63,11 @@ class TimeboxList extends React.Component {
                                     onDelete={() => this.removeTimebox(index)}
                                     onEdit={() => this.updateTimebox(index, { ...timebox, title: "Updated" })}
                                 />
-                            </Error>
+                            </ErrorBoundary>
 
                         )
                         )}
-                </Error>
+                </ErrorBoundary>
 
 
             </>
