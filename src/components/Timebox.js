@@ -2,7 +2,7 @@ import React from 'react';
 
   
 function Timebox({ title, totalTimeInMinutes, onDelete, onEdit }) {
-    if (totalTimeInMinutes > 0) {
+    if (totalTimeInMinutes < 0) {
         throw new Error("Czas musi być większy od zera!")
     }
     

@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 function Clock ({className,  minutes, seconds }) {      
     return  (
 <h2 className={"clock " + className }>
@@ -14,6 +14,15 @@ function Clock ({className,  minutes, seconds }) {
     )
     
   }
+  Clock.defaultProps = {
+    className : ""
+  }
+  const NumberOrStringType = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
+  Clock.propTypes = {
+    className: PropTypes.string.isRequired,
+    minutes: NumberOrStringType.isRequired,
+    seconds: NumberOrStringType.isRequired
+  }
   function formater (props){
     let formater;
       if (props < 0){
@@ -24,6 +33,11 @@ function Clock ({className,  minutes, seconds }) {
          formater = props;
       }            
      return `${formater}`;
+    }
+    function NonNegativeNimberType(props, propName, componentName){
+      if (props[propName] < 0 ) {
+        return new Error (`Invalid prop ' ${propName}' issued to commponent '${componentName}'. It has to be greater or equal to 0.`)
+      }
     }
 
   export default Clock;
