@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 function Clock ({className,  minutes, seconds }) {      
     return  (
-<h2 className={"clock " + className }>
+<h2 className={"Clock " + className }>
       Pozostało
       <div>
-      <div className="clock__minutes">{formater(minutes)}</div>
-      <div className="clock__separator">:</div>
-      <div className="clock__seconds">{formater(seconds)}</div>
+      <div className="Clock__minutes">{formater(minutes)}</div>
+      <div className="Clock__separator">:</div>
+      <div className="Clock__seconds">{formater(seconds)}</div>
       </div>
       
     </h2>
