@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 function Clock ({className,  minutes, seconds }) {      
     return  (
 <h2 className={"Clock " + className }>
-      Pozostało
-      <div>
-      <div className="Clock__minutes">{formater(minutes)}</div>
-      <div className="Clock__separator">:</div>
-      <div className="Clock__seconds">{formater(seconds)}</div>
-      </div>
+      <>Pozostało </>
+    
+      {formater(minutes)}
+       : 
+      {formater(seconds)}
+     
       
     </h2>
     )
