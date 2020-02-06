@@ -8,10 +8,8 @@ import ErrorBoundary from './ErrorBoundary';
 class TimeboxList extends React.Component {
     state = {
         timeboxes: [
-            { id: "a", title: "Uczę się robić listy komponentów", totalTimeInMinutes: 25 },
-            { id: "b", title: "Uczę się reacta tak ogólnie", totalTimeInMinutes: 360000 },
-            { id: "c", title: "Lubię placki", totalTimeInMinutes: 5 }
-        ],
+            { id: 1, title: "Uczę się robić listy komponentów", totalTimeInMinutes: 25 }],
+           
         hasError: false
     }
 
