@@ -34,10 +34,10 @@ function Clock ({className,  minutes, seconds }) {
       }            
      return `${formater}`;
     }
-    function NonNegativeNimberType(props, propName, componentName){
-      if (props[propName] < 0 ) {
-        return new Error (`Invalid prop ' ${propName}' issued to commponent '${componentName}'. It has to be greater or equal to 0.`)
-      }
-    }
+    // function NonNegativeNumberType(props, propName, componentName){
+    //   if (props[propName] < 0 ) {
+    //     return new Error (`Invalid prop ' ${propName}' issued to commponent '${componentName}'. It has to be greater or equal to 0.`)
+    //   }
+    // }
 
   export default Clock;

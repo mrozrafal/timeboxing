@@ -102,7 +102,7 @@ render() {
    <button onClick= {this.handleStart}disabled={isRunning}>Start</button>
    <button onClick={this.handleStop} disabled={!isRunning}>Stop</button>
    <button onClick={this.togglePause} disabled={!isRunning}>{isPaused ? "Wznów" : "Pauzuj"}</button>
-   Liczba przerw: {pausesCount}
+   <br/>Liczba przerw: {pausesCount}
   </div>        
        )
     }

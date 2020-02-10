@@ -35,6 +35,7 @@ class TimeboxList extends React.Component {
             return { timeboxes };
         })
     }
+
     handleCreate = (createdTimebox) => {
         try {
             this.addTimebox(createdTimebox);
@@ -59,7 +60,7 @@ class TimeboxList extends React.Component {
                                     title={timebox.title}
                                     totalTimeInMinutes={timebox.totalTimeInMinutes}
                                     onDelete={() => this.removeTimebox(index)}
-                                    onEdit={() => this.updateTimebox(index, { ...timebox, title: "Updated" })}
+                                    
                                 />
                             </ErrorBoundary>
 
