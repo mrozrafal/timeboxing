@@ -60,7 +60,7 @@ class TimeboxList extends React.Component {
                                     title={timebox.title}
                                     totalTimeInMinutes={timebox.totalTimeInMinutes}
                                     onDelete={() => this.removeTimebox(index)}
-                                    
+                                                                        
                                 />
                             </ErrorBoundary>
 
