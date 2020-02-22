@@ -3,6 +3,14 @@ import TimeboxCreator from './TimeboxCreator';
 import Timebox from './Timebox';
 import ErrorBoundary from './ErrorBoundary';
 
+function wait(ms=1000) {
+    return new Promise (
+        (resoleve) => {
+            setTimeout(resolve, ms);
+        }
+    )
+}
+
 
 
 class TimeboxList extends React.Component {
