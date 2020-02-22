@@ -2,25 +2,38 @@ import React from 'react';
 import TimeboxCreator from './TimeboxCreator';
 import Timebox from './Timebox';
 import ErrorBoundary from './ErrorBoundary';
+import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 
-function wait(ms=1000) {
-    return new Promise (
-        (resoleve) => {
+function wait(ms = 1000) {
+    return new Promise(
+        (resolve) => {
             setTimeout(resolve, ms);
         }
     )
 }
-
+async function getAllTimeboxes() {
+    await wait(1000);
+    return [
+        { id: 1, title: "Uczę się robić listy komponentów", totalTimeInMinutes: 25 }
+    ]
+}
 
 
 class TimeboxList extends React.Component {
     state = {
-        timeboxes: [
-            { id: 1, title: "Uczę się robić listy komponentów", totalTimeInMinutes: 25 }],
-           
+        timeboxes: [],
+        loading: true,
+
         hasError: false
     }
 
+    componentDidMount() {
+        getAllTimeboxes().then(
+            (timeboxes) => this.setState({ timeboxes })
+        ).then(
+            () => this.setState({loading: false})
+        )
+    }
 
 
     addTimebox = (timebox) => {
@@ -57,6 +70,7 @@ class TimeboxList extends React.Component {
         return (
             <>
                 <TimeboxCreator onCreate={this.handleCreate} />
+                { this.state.loading ? "Timeboxy się ładują..." : null}
                 <ErrorBoundary message="Coś poszło nie tak w liście :(">
 
                     {
@@ -68,7 +82,7 @@ class TimeboxList extends React.Component {
                                     title={timebox.title}
                                     totalTimeInMinutes={timebox.totalTimeInMinutes}
                                     onDelete={() => this.removeTimebox(index)}
-                                    
+
                                 />
                             </ErrorBoundary>
 
