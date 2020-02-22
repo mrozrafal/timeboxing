@@ -13,6 +13,7 @@ function wait(ms = 1000) {
 }
 async function getAllTimeboxes() {
     await wait(1000);
+    
     return [
         { id: 1, title: "Uczę się robić listy komponentów", totalTimeInMinutes: 25 }
     ]
@@ -23,14 +24,16 @@ class TimeboxList extends React.Component {
     state = {
         timeboxes: [],
         loading: true,
-
-        hasError: false
+        error: null
+        
     }
 
     componentDidMount() {
         getAllTimeboxes().then(
             (timeboxes) => this.setState({ timeboxes })
-        ).then(
+        ).catch(
+            (error) => this.setState({error})
+        ).finally(
             () => this.setState({loading: false})
         )
     }
@@ -71,6 +74,7 @@ class TimeboxList extends React.Component {
             <>
                 <TimeboxCreator onCreate={this.handleCreate} />
                 { this.state.loading ? "Timeboxy się ładują..." : null}
+                {this.state.error ? "Nie udało się załadować timeboxów" : null}
                 <ErrorBoundary message="Coś poszło nie tak w liście :(">
 
                     {
