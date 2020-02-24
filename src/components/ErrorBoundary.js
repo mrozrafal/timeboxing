@@ -22,7 +22,7 @@ class ErrorBoundary extends React.Component {
 }
 ErrorBoundary.propTypes = {
     message: propTypes.string.isRequired,
-    childer: propTypes.any.isRequired,
+    children: propTypes.any.isRequired,
     
 
 }
