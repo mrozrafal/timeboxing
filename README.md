@@ -1,6 +1,8 @@
 
 # Timebox is a time management application. It can be used to pomodoro technique or just to set your working time. There is a pause option and an simple tasks list. 
-![presentation](src/assets/img/presentation.png)This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![presentation](src/assets/img/presentation.png)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
