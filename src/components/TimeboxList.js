@@ -1,12 +1,9 @@
-import React from 'react';
-import TimeboxCreator from './TimeboxCreator';
-import Timebox from './Timebox';
-import ErrorBoundary from './ErrorBoundary';
-import TimeboxesAPI from "../api/fetchTimeboxesAPI"
-import uuid from 'uuid';
+import React from "react";
 
+import Timebox from "./Timebox";
+import TimeboxCreator from "./TimeboxCreator";
+import TimeboxesAPI from "../api/AxiosTimeboxesAPI";
 
-//skończyłem film  lekacja 7: fake Api adapter na 6:00
 class TimeboxList extends React.Component {
     state = {
         "timeboxes": [],
@@ -23,6 +20,7 @@ class TimeboxList extends React.Component {
             () => this.setState({loading: false})
         )
     }
+    
     addTimebox = (timebox) => {
         TimeboxesAPI.addTimebox(timebox).then(
             (addedTimebox) => this.setState(prevState => {
@@ -57,43 +55,31 @@ class TimeboxList extends React.Component {
     handleCreate = (createdTimebox) => {
         try {
             this.addTimebox(createdTimebox);
+        } catch (error) {
+            console.log("Jest błąd przy tworzeniu timeboxa:", error)
         }
-        catch (error) {
-            console.log("Wystąpił błąd podczas tworzenia timeboxa")
-        }
-
+        
     }
     render() {
         return (
             <>
                 <TimeboxCreator onCreate={this.handleCreate} />
-                {this.state.loading ? "Timeboxy się ładują..." : null}
-                {this.state.error ? "Nie udało się załadować timeboxów" : null}
-                <ErrorBoundary message="Coś poszło nie tak w liście :(">
-
-                    {
-
-                        this.state.timeboxes.map((timebox, index) => (
-                            <ErrorBoundary message="Coś poszło nie tak w timeboxie :(">
-                                <Timebox
-                                    key={timebox.id}
-                                    title={timebox.title}
-                                    totalTimeInMinutes={timebox.totalTimeInMinutes}
-                                    onDelete={() => this.removeTimebox(index)}
-                                    onEdit={() => this.updateTimebox(index, {...timebox, title: "Updated timebox"})}
-
-                                />
-                            </ErrorBoundary>
-
-                        )
-                        )}
-                </ErrorBoundary>
-
-
+                { this.state.loading ? "Timeboxy się ładują..." : null}
+                { this.state.error ? "Nie udało się załadować :(" : null }
+                {
+                    this.state.timeboxes.map((timebox, index) => (
+                        <Timebox 
+                            key={timebox.id} 
+                            title={timebox.title} 
+                            totalTimeInMinutes={timebox.totalTimeInMinutes}
+                            onDelete={() => this.removeTimebox(index)}
+                            onEdit={() => this.updateTimebox(index, {...timebox, title: "Updated timebox"})}
+                        />
+                    ))
+                }
             </>
         )
     }
-
 }
 
 export default TimeboxList;

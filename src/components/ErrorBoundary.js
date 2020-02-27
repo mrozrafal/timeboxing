@@ -1,29 +1,26 @@
 import React from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 class ErrorBoundary extends React.Component {
     state = {
         hasError: false
     }
     static getDerivedStateFromError(error) {
-        // Zaktualizuj stan, aby następny render pokazał zastępcze UI.
+        // Update state so the next render will show the fallback UI.
         return { hasError: true };
     }
     componentDidCatch(error, info) {
-        // Możesz także zalogować błąd do zewnętrznego serwisu raportowania błędów
-        console.log("Wystąpił błąd:", error, info);
+        // You can also log the error to an error reporting service
+        console.log("Wystąpił następujący błąd:", error, info);
     }
     render() {
         const { message, children } = this.props;
         return this.state.hasError ? message : children;
     }
-
-
 }
 ErrorBoundary.propTypes = {
-    message: propTypes.string.isRequired,
-    children: propTypes.any.isRequired,
-    
-
+    message: PropTypes.string.isRequired,
+    children: PropTypes.any.isRequired
 }
+
 export default ErrorBoundary;
