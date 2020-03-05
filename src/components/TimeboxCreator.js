@@ -20,6 +20,7 @@ class TimeboxCreator extends React.Component {
             <form onSubmit={this.handleSubmit} className="TimeboxCreator">
                 <label className="Labels">Co robisz?
                    <input
+                   className="input"
                         ref={this.titleInput}
                         type="text"
                     />
@@ -28,6 +29,7 @@ class TimeboxCreator extends React.Component {
                     className="Labels">
                     Ile minut?
                    <input
+                   className="input"
                         ref={this.totalTimeInMinutesInput}
                         type="number"
                     />
