@@ -4,14 +4,24 @@
 }
 
 .TimeboxEditor,
-.TimeboxCreator {
+.TimeboxCreator,
+.LoginForm {
     display: block;
     text-align: right;
     border: 2px solid white;
     border-radius: 4px;
     padding: 20px;
  
-    ;
+}
+.LoginForm {
+    &__error-message {
+        margin: 16px auto;
+        text-align: center;
+        border: 1px solid red;
+        padding: 8px;
+        border-radius: 4px;
+        color: darkred;
+    }
 }
 .Timebox {
     padding: 4px;
@@ -24,15 +34,24 @@
 }
 
 .Labels {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
+    
+
+   
+    
 }
 
 .Inputs {
     min-width: 60%;
     margin-left: 20px;
     font-size: 1rem;
+   
+    
 }
-
+.input {
+    margin-left:20px;
+}
 button {
     font-size: 1rem;
     margin-left: 1rem;
@@ -92,4 +111,15 @@ button {
 .inactive {
     filter: blur(2px) grayscale(1);
 
+}
+
+
+
+.header {
+    margin: 16px;
+    display: flex;
+    justify-content: flex-end;
+    &__logout-link{
+        margin-left: 12px;
+    }
 }
