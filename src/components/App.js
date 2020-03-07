@@ -4,7 +4,7 @@ import ErrorBoundary from "./ErrorBoundary";
 import TimeboxList from './TimeboxList';
 import LoginForm from './LoginForm';
 import AutenticationAPI from '../api/FetchAuthenticationAPI';
-import jwt from 'jsonwebtoken';
+import UserGreeting from './UserGreeting';
 
 class App extends React.Component {
 
@@ -16,10 +16,7 @@ class App extends React.Component {
     isUserLoggedIn() {
         return !!this.state.accessToken;
     }
-    getUserEmail() {
-        const decodedToken = jwt.decode(this.state.accessToken);
-        return decodedToken.email;
-    }
+
     handleLogout = () => {
         this.setState({
             accessToken:null,
@@ -48,8 +45,9 @@ class App extends React.Component {
                     {
                         this.isUserLoggedIn() ?
                             <>
+                            
                                 <header className="header">
-                                    Witaj {this.getUserEmail()}
+                                <UserGreeting accessToken={this.state.accessToken}/> 
                                     <a onClick={this.handleLogout}
                                         className="header__logout-link" href="#">Wyloguj się</a>
                                 </header>
