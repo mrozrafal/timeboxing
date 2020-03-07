@@ -46,7 +46,7 @@ class App extends React.Component {
                     {
                         this.isUserLoggedIn() ?
                             <>
-                                <AuthenticatedApp accessToken={this.state.accessToken} />
+                                <AuthenticatedApp accessToken={this.state.accessToken} onLogout={this.handleLogout} />
                                 
                             </>
                             :
