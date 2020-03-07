@@ -1,6 +1,7 @@
 import React from 'react';
 import jwt from 'jsonwebtoken';
 
+
 function UserGreeting ({accessToken}) {
 return <> Witaj {getUserEmail(accessToken)} </>
 }
