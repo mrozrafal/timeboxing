@@ -1,9 +1,17 @@
 import React from 'react';
 import jwt from 'jsonwebtoken';
+import AuthenticationContext from '../contexts/AuthenticationContext';
 
 
-function UserGreeting ({accessToken}) {
-return <> Witaj {getUserEmail(accessToken)} </>
+function UserGreeting(props) {
+    return <AuthenticationContext.Consumer>
+        {
+            ({accessToken}) => <>
+        Witaj {getUserEmail(accessToken)} </>
+        }
+       
+
+    </AuthenticationContext.Consumer>
 }
 export default UserGreeting;
 

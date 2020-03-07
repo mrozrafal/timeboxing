@@ -3,11 +3,11 @@ import Header from './Header'
 import TimeboxList from './TimeboxList';
 import EditableTimebox from './EditableTimebox';
 
-function AuthenticatedApp({accessToken, onLogout}) {
+function AuthenticatedApp({ onLogout}) {
     return <>
-    <Header accessToken={accessToken} onLogout={onLogout}/>
-                                <TimeboxList accessToken={accessToken}/>
-                                <EditableTimebox />
+    <Header  onLogout={onLogout}/>
+     <TimeboxList />
+     <EditableTimebox />
     </>
 }
 

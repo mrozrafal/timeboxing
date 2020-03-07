@@ -5,6 +5,7 @@ import ErrorBoundary from "./ErrorBoundary";
 import LoginForm from './LoginForm';
 import AutenticationAPI from '../api/FetchAuthenticationAPI';
 import AuthenticatedApp from './AuthenticatedApp';
+import AuthenticationContext from '../contexts/AuthenticationContext';
 
 
 class App extends React.Component {
@@ -45,10 +46,10 @@ class App extends React.Component {
                 <ErrorBoundary message="Coś nie działa w całej aplikacji">
                     {
                         this.isUserLoggedIn() ?
-                            <>
-                                <AuthenticatedApp accessToken={this.state.accessToken} onLogout={this.handleLogout} />
+                            <AuthenticationContext.Provider value={ {accessToken: this.state.accessToken}}>
+                                <AuthenticatedApp  onLogout={this.handleLogout} />
                                 
-                            </>
+                            </AuthenticationContext.Provider>
                             :
                             <LoginForm
                                 errorMessage={this.state.previousLoginAttemptFailed ? "Nie udało się zalogować" : null}
