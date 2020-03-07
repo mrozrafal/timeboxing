@@ -1,11 +1,11 @@
 import React from 'react';
-import EditableTimebox from './EditableTimebox';
+
 import ErrorBoundary from "./ErrorBoundary";
-import TimeboxList from './TimeboxList';
+
 import LoginForm from './LoginForm';
 import AutenticationAPI from '../api/FetchAuthenticationAPI';
+import AuthenticatedApp from './AuthenticatedApp';
 
-import Header from './Header'
 
 class App extends React.Component {
 
@@ -46,10 +46,8 @@ class App extends React.Component {
                     {
                         this.isUserLoggedIn() ?
                             <>
-                            
-                                <Header accessToken={this.state.accessToken} onLogout={this.handleLogout}/>
-                                <TimeboxList accessToken={this.state.accessToken}/>
-                                <EditableTimebox />
+                                <AuthenticatedApp accessToken={this.state.accessToken} />
+                                
                             </>
                             :
                             <LoginForm
