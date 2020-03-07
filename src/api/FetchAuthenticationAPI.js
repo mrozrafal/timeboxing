@@ -1,3 +1,4 @@
+import makeRequest from './makeFetchRequest'
 
 
 
@@ -11,18 +12,3 @@ const FetchAuthenticationAPI = {
 
 }
 export default FetchAuthenticationAPI;
-
-async function makeRequest(url, method, body) { 
-    const jsonBody = body ? JSON.stringify(body) : undefined;
-    const response = await window.fetch(url, {
-        method,
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: jsonBody
-    });
-    if (!response.ok) {
-        throw new Error("Something went wrong!");
-    }
-    return response;
-}
