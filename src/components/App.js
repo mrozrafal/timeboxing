@@ -4,7 +4,8 @@ import ErrorBoundary from "./ErrorBoundary";
 import TimeboxList from './TimeboxList';
 import LoginForm from './LoginForm';
 import AutenticationAPI from '../api/FetchAuthenticationAPI';
-import UserGreeting from './UserGreeting';
+
+import Header from './Header'
 
 class App extends React.Component {
 
@@ -46,11 +47,7 @@ class App extends React.Component {
                         this.isUserLoggedIn() ?
                             <>
                             
-                                <header className="header">
-                                <UserGreeting accessToken={this.state.accessToken}/> 
-                                    <a onClick={this.handleLogout}
-                                        className="header__logout-link" href="#">Wyloguj się</a>
-                                </header>
+                                <Header accessToken={this.state.accessToken} onLogout={this.handleLogout}/>
                                 <TimeboxList accessToken={this.state.accessToken}/>
                                 <EditableTimebox />
                             </>
