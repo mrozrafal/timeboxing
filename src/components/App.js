@@ -1,11 +1,11 @@
 import React from 'react';
-
 import ErrorBoundary from "./ErrorBoundary";
-
 import LoginForm from './LoginForm';
 import AutenticationAPI from '../api/FetchAuthenticationAPI';
-import AuthenticatedApp from './AuthenticatedApp';
 import AuthenticationContext from '../contexts/AuthenticationContext';
+
+
+const AuthenticatedApp = React.lazy(() => import("./AuthenticatedApp"));
 
 
 class App extends React.Component {
@@ -21,23 +21,23 @@ class App extends React.Component {
 
     handleLogout = () => {
         this.setState({
-            accessToken:null,
-            previousLoginAttemptFailed:false
+            accessToken: null,
+            previousLoginAttemptFailed: false
         })
     }
     handleLoginAttempt = (credentials) => {
         AutenticationAPI.login(credentials)
-        .then(({accessToken}) => {
-            this.setState({
-                accessToken, previousLoginAttemptFailed:false
-            })
-               
+            .then(({ accessToken }) => {
+                this.setState({
+                    accessToken, previousLoginAttemptFailed: false
+                })
+
             }
-        ).catch( () => {
-            this.setState({ previousLoginAttemptFailed:true })
-            console.log("invaiild email or password")
-        })
-        
+            ).catch(() => {
+                this.setState({ previousLoginAttemptFailed: true })
+                console.log("invaiild email or password")
+            })
+
     }
     render() {
         return (
@@ -46,9 +46,10 @@ class App extends React.Component {
                 <ErrorBoundary message="Coś nie działa w całej aplikacji">
                     {
                         this.isUserLoggedIn() ?
-                            <AuthenticationContext.Provider value={ {accessToken: this.state.accessToken}}>
-                                <AuthenticatedApp  onLogout={this.handleLogout} />
-                                
+                            <AuthenticationContext.Provider value={{ accessToken: this.state.accessToken }}>
+                                <React.Suspense fallback={"... Loading"}>
+                                    <AuthenticatedApp onLogout={this.handleLogout} />
+                                </React.Suspense>
                             </AuthenticationContext.Provider>
                             :
                             <LoginForm
